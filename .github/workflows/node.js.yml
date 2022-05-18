@@ -53,7 +53,7 @@ jobs:
             # mandatory
             -Dsonar.projectKey=ismamig_project_DevOps
             -Dsonar.organization=isma
-  build:
+  test_securite:
     permissions:
       contents: read # for actions/checkout to fetch code
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
@@ -79,6 +79,24 @@ jobs:
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: 'trivy-results.sarif'
+  archive-build-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: mkdir downloads
+
+      - name: step 2 - Add artifacts to publish to the temp folder
+        run: |
+          cd downloads
+          echo 'Artifact : confirme le bon déroulement du script' > artifact.txt
+          cd ..
+
+      - name: Step 3 - Use the Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: artifact-download
+          path: downloads
           
   push_to_registries:
     name: Push Docker image to multiple registries

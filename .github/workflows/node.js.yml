@@ -53,6 +53,14 @@ jobs:
             # mandatory
             -Dsonar.projectKey=ismamig_project_DevOps
             -Dsonar.organization=isma
+          output: qualite.txt
+      - if: always()
+        name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: quality report
+          path: qualite.txt
+          retention-days: 5
   test_securite:
     permissions:
       contents: read # for actions/checkout to fetch code

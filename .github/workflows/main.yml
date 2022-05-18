@@ -97,4 +97,12 @@ jobs:
         with: 
           name: artifact-download
           path: downloads
-          
+  notify:
+    name: Discord notification
+    runs-on: ubuntu-latest
+    env:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+    steps:
+      - uses: Ilshidur/action-discord@master
+        with:
+          args: 'Hello World !'

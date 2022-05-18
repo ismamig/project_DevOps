@@ -1,14 +1,16 @@
 # project_DevOps
 
-first : clone the project
+## Tests unitaires
+Ils permettent de tester une partie de notre programme. Ici, Jest est utilisé pour testé son app.
+Ils sont effectué à chaque push.
 
-second : cd project_DevOps puis npm i
+## Tests de sécurité
+Trivy effectue des tests de securité puis envois tout dans l'onglet Security de github.
+Ils sont effectué à chaque push.
 
-thrid : launch test unit with npm run test 
+## Difficultés
+J'ai voulu utiliser Docker et build une image, cependant, je n'ai pas réussi à deployer correctement l'image.
 
-
-AIDE POUR GITHUB : https://github.blog/2022-02-02-build-ci-cd-pipeline-github-actions-four-steps/
-
-AIDE POUR GITLAB : https://blog.eleven-labs.com/fr/introduction-gitlab-ci/ 
-
-# 1ere modif
+## Differents deploiements possible
+Pour deployer une image Docker, il existe 3 solutions, Azure, AWS et Kubernetes si j'ai bien compris.
+Sans utiliser Docker, on peut utiliser des solutions gratuites comme Firebase ou Heroku.
